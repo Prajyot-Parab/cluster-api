@@ -23,7 +23,7 @@ SHELL:=/usr/bin/env bash
 #
 # Go.
 #
-GO_VERSION ?= 1.18.3
+GO_VERSION ?= 1.18.4
 GO_CONTAINER_IMAGE ?= docker.io/library/golang:$(GO_VERSION)
 
 # Use GOPROXY environment variable if set
@@ -461,7 +461,7 @@ APIDIFF_OLD_COMMIT ?= $(shell git rev-parse origin/main)
 apidiff: $(GO_APIDIFF) ## Check for API differences
 	$(GO_APIDIFF) $(APIDIFF_OLD_COMMIT) --print-compatible
 
-ALL_VERIFY_CHECKS = doctoc boilerplate shellcheck tiltfile modules gen conversions capi-book-summary
+ALL_VERIFY_CHECKS = doctoc boilerplate shellcheck tiltfile modules conversions capi-book-summary gen
 
 .PHONY: verify
 verify: $(addprefix verify-,$(ALL_VERIFY_CHECKS)) ## Run all verify-* targets
